@@ -19,7 +19,8 @@ const createUser = async (user) => {
         console.log(USERSERV, `user already exists: ${JSON.stringify(existingUser)}`);
         return {
             status: FAILED,
-            message: USER_ALREADY_EXISTS
+            message: USER_ALREADY_EXISTS,
+            account_id: user.account_id
         };
     }
     existingUser = await getUserByEmail(user.email);
@@ -27,7 +28,8 @@ const createUser = async (user) => {
         console.log(USERSERV, `user already exists: ${JSON.stringify(existingUser)}`);
         return {
             status: FAILED,
-            message: USER_ALREADY_EXISTS
+            message: USER_ALREADY_EXISTS,
+            account_id: user.account_id
         };
     }
     const response = await new Promise(resolve => mongoClient.connection((db) => {
@@ -37,7 +39,8 @@ const createUser = async (user) => {
             .then(() => {
                 console.log(USERSERV, `user created`);
                 resolve({
-                    status: COMPLETED
+                    status: COMPLETED,
+                    account_id: user.account_id
                 });
             })
             .catch((error) => {
