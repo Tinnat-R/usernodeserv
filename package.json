@@ -1,0 +1,23 @@
+{
+  "name": "tinnat-userserv",
+  "version": "1.0.0",
+  "description": "Node module for user related services and activities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsmehemm/usernodeserv.git"
+  },
+  "author": "hemanthprasathmurali@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsmehemm/usernodeserv/issues"
+  },
+  "homepage": "https://github.com/itsmehemm/usernodeserv#readme",
+  "dependencies": {
+    "mongodb": "^2.2.36",
+    "uniqid": "^5.2.0"
+  }
+}
