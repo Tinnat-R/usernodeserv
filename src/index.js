@@ -2,7 +2,8 @@ const uniqid = require('uniqid');
 const createUser = require('./db-actions/create-user');
 const {
     getUserByAccountId,
-    getUserByEmail
+    getUserByEmail,
+    getUserByPartyId
 } = require('./db-actions/get-user');
 const {
     USERSERV,
@@ -21,11 +22,26 @@ module.exports = {
             email: req.email,
             phone_number: req.phone_number,
             account_type: req.account_type,
+            party_id: req.party_id,
             authentication_party: FACEBOOK,
             created_at: new Date().getTime()
         };
         const response = await createUser(user);
         return response;
+    },
+    getUserByPartyId: async (partyId) => {
+        console.log(USERSERV, `fetching user with party id ${partyId}`);
+        const response = await getUserByPartyId(partyId);
+        if (response) {
+            return {
+                status: COMPLETED,
+                data: response
+            };
+        }
+        return {
+            status: FAILED,
+            message: USER_NOT_FOUND
+        };
     },
     getUserByAccountId: async (accountId) => {
         console.log(USERSERV, `fetching user with account id ${accountId}`);

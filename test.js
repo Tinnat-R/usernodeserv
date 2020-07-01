@@ -5,7 +5,8 @@ userserv
         name: 'TEST TEST',
         email: 'test@test.com',
         phone_number: '9999999999',
-        account_type: 'PERSONAL'
+        account_type: 'PERSONAL',
+        party_id: 1234567890
     })
     .then(response => console.log(response))
     .catch(error => console.log(error));
@@ -17,7 +18,7 @@ userserv
     .catch(error => console.log(error));
 
 
-    userserv
+userserv
     .getUserByEmail("hemanthprasathmurali@gmail.com")
     .then(response => console.log(response))
     .catch(error => console.log(error));

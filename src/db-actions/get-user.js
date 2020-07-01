@@ -50,7 +50,31 @@ const getUserByEmail = async (email) => {
     return response;
 };
 
+const getUserByPartyId = async (partyId) => {
+    console.log(USERSERV, `get user by party id: ${partyId}`);
+    const response = await new Promise(resolve => mongoClient.connection(db => {
+        db
+            .collection(COLLECTION.USER)
+            .find({
+                party_id: partyId
+            })
+            .toArray()
+            .then(result => {
+                if (Array.isArray(result) && result.length === 1) {
+                    return resolve(result[0]);
+                }
+                return resolve(null);
+            })
+            .catch((error) => {
+                console.log(USERSERV, `error getting user info: ${JSON.stringify(error)}`);
+                return resolve(null);
+            });
+    }));
+    return response;
+};
+
 module.exports = {
     getUserByAccountId,
-    getUserByEmail
+    getUserByEmail,
+    getUserByPartyId
 };
