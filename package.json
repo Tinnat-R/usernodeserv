@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/itsmehemm/usernodeserv#readme",
   "dependencies": {
-    "mongodb": "^2.2.36",
+    "mongodb": "^3.6.1",
     "uniqid": "^5.2.0"
   }
 }
